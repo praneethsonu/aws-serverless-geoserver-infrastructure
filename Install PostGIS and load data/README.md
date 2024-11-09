@@ -10,3 +10,19 @@
 ```bash
 sudo dnf install postgresql15 --assumeyes
 ```
+### Set up PostGIS
+
+Now the psql command line tool is installed we can connect to the database. You will need to know your database connection string which you can find in the RDS console for your database.
+
+6. Retrieve the database end point address you copied earlier when setting up the database server. Copy and paste the following command into the terminal. Before you run it delete and past your RDS endpoint that you saved earlier. It should look something like: rdsendpoint=mypostgi.cluster-abcdefghijk.us-east-1.rds.amazonaws.com.
+```bash
+rdsendpoint=<RDS-endpoint>
+```
+Then copy and paste the following command to connect to your database.
+```bash
+psql --host=$rdsendpoint \
+--port=5432 \
+--username=pgadmin \
+--password \
+--dbname=firstdb
+```
