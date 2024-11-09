@@ -18,4 +18,16 @@ https://geoserver.geosolutionsgroup.com/edu/en/clustering/clustering/passive/pas
 
 Now let's get started and start building this out from scratch on AWS.
 
+## Features
+
+- Set up infrastructure.
+- Configure Geoserver.
+- Install PostGIS and load data
+
+## Getting Started
+
+Follow the instructions in the [docs](docs/) directory to set up and deploy the infrastructure.
+
+## License
+
 
