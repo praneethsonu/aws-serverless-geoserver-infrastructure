@@ -29,7 +29,7 @@ Now let's get started and start building this out from scratch on AWS.
 
 ## Getting Started
 
-Follow the instructions in the [docs](docs/) directory to set up and deploy the infrastructure.
+Follow the instructions in the [docs](Howtogetstarted/) directory to set up and deploy the infrastructure.
 
 ## License
 
