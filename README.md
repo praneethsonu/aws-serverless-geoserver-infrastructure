@@ -1,9 +1,9 @@
 # Serverless GeoServer Infrastructure with PostgreSQL and PostGIS Integration
 
-## Description:
+## Description
 Deploy and auto-scale GeoServer with PostgreSQL and the PostGIS extension on AWS. This project leverages containerized deployment using AWS Fargate, enabling you to focus on geospatial data management without the complexities of server maintenance.
 
-## Architecture Overview:
+## Architecture Overview
 
 The architecture is illustrated in the figure below.
 
