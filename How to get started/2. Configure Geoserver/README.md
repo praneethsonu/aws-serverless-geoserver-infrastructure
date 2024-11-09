@@ -1,6 +1,6 @@
 # Configure Geoserver
 
-In this section of the lab, you will:
+In this section:
 - Configure the PostgreSQL database including installing PostGIS.
 - Populate the database with some geospatial data
 - Provision the GeoServer container.
