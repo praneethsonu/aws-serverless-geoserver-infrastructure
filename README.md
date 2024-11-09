@@ -30,4 +30,4 @@ Follow the instructions in the [docs](docs/) directory to set up and deploy the 
 
 ## License
 
-
+This project is licensed under the MIT License.
