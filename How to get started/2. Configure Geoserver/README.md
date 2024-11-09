@@ -17,4 +17,7 @@ We will now create an ECS cluster to support Fargate container instances to host
 Leave Infrastructure settings as is to support Fargate based serverless deployment. Click Create to create the cluster.
 
 This will take a few minutes to complete. Troubleshooting: If this operation fails with an error the first time rerun the create cluster instructions above.
+
 ![image](https://github.com/user-attachments/assets/df9c359d-9aa7-4d34-8853-19a86758ab8f)
+
+## Run Geoserver
