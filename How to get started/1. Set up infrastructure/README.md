@@ -114,7 +114,7 @@ We will create the database now to ensure it is ready when we need to connect to
    - Storage Type--> Configuration option: Aurora Standard
 6. In connectivity section set the following values:
    - Compute Resource: Don't Connect to an EC2 compute resource
-   - (VPC): Select the Geoserver-VPC you created earlier
+   - Virtual Private Cloud (VPC): Select the Geoserver-VPC you created earlier
    - VPC Security Group: Select Choose Existing and select HOL-PostGIS security group that you created earlier.
 Leave the other options as the defaults.
 7. In the Monitoring section deselect Performance Insights and Enhanced Monitoring to turn off these features. You may wish to explore these latter for your own deployments but we do not use them in this lab.
@@ -146,11 +146,33 @@ Congratulations. You have just created a NFS file system that can be used by Geo
  ## Create AWS CloudShell environment to manage database
 We will use an AWS CloudShell instance configured to run within the same VPC as the database. We will use the database administration client to configure PostGIS and upload some sample data.
 
-At the bottom of the AWS console browser window select CloudShell to open the AWS CloudShell command line.
+1. At the bottom of the AWS console browser window select CloudShell to open the AWS CloudShell command line.
 
-CloudShell button
+![image](https://github.com/user-attachments/assets/71c9ddd3-fa28-4ee4-bd8a-71f2c30e4b50)
 
-At the top right of the CloudShell window select the Actions menu dropdown and select the Create VPC environment action.
+2. At the top right of the CloudShell window select the Actions menu dropdown and select the Create VPC environment action.
+![Screenshot 2024-11-07 202259](https://github.com/user-attachments/assets/f2156505-4ba8-43ad-adf3-1e3aae1c51e6)
+3. Fill out the Name, VPC, Subnet and Security group settings for your instance of CloudShell to run in.
+   - Name: geoserverlab (or name of your choice)
+   - Virtual Private Cloud(VPC): Make sure you select the geoserver VPC that you created earlier
+   - Subnet: Select a PRIVATE subnet (Note: CloudShell only supports outgoing Internet access via Private subnet and NAT gateway)
+   - Security Group: Select the HOLGeoserver security group (This security group allows access to the database)
+![Screenshot 2024-11-07 202453](https://github.com/user-attachments/assets/9d852ae1-2bcc-445a-b950-5234102479e6)
+
+4. Once dialog filled out click Create button. Make sure you use the geoserverlab CloudShell environment in latter command line steps.
+
+Verify your RDS database is running
+Before you move on verify that your RDS database is running.
+
+5. In RDS console check your database is available. To do this:
+   - Type RDS in the top search bar then click RDS in the search results
+   - From the RDS console dashboard select Databases from the left hand menu.
+6. Click on the postgis name to open the database details. Click the radio button to the left of the mypostgis row where the Role column shows "Regional Cluster". (It should be pre-selected). In the Connectivity & Security tab locate the writer end point as shown below. Click the Copy icon to copy the end point address. Store this in a text editor as we will need it when connecting to the database.
+![Screenshot 2024-11-07 221907](https://github.com/user-attachments/assets/47097cd6-b3b4-40a1-9225-4d757fafdebf)
+![Screenshot 2024-11-07 222229](https://github.com/user-attachments/assets/c03c1974-a2a9-4be1-a4be-2024982a1ff7)
+
+
+
 
 
 
