@@ -161,7 +161,8 @@ We will use an AWS CloudShell instance configured to run within the same VPC as 
 
 4. Once dialog filled out click Create button. Make sure you use the geoserverlab CloudShell environment in latter command line steps.
 
-Verify your RDS database is running
+## Verify your RDS database is running
+
 Before you move on verify that your RDS database is running.
 
 5. In RDS console check your database is available. To do this:
@@ -170,12 +171,4 @@ Before you move on verify that your RDS database is running.
 6. Click on the postgis name to open the database details. Click the radio button to the left of the mypostgis row where the Role column shows "Regional Cluster". (It should be pre-selected). In the Connectivity & Security tab locate the writer end point as shown below. Click the Copy icon to copy the end point address. Store this in a text editor as we will need it when connecting to the database.
 ![Screenshot 2024-11-07 221907](https://github.com/user-attachments/assets/47097cd6-b3b4-40a1-9225-4d757fafdebf)
 ![Screenshot 2024-11-07 222229](https://github.com/user-attachments/assets/c03c1974-a2a9-4be1-a4be-2024982a1ff7)
-
-
-
-
-
-
-
-
 
