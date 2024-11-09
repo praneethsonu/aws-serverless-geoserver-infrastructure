@@ -2,8 +2,8 @@
 
 In this section:
 
-- A Virtual Private Cloud (VPC).
-- A PostgreSQL database using Amazon PostgreSQL.
+- A Virtual Private Cloud (VPC) and create Security Groups.
+- A PostgreSQL database using Amazon RDS.
 - An Amazon Elastic File System (EFS) for shared storage.
 - An administration server to allow you to perform database setup tasks.
 - Security groups that will control access to the database and shared storage.
@@ -136,8 +136,21 @@ In this section we will create the shared file system that we will map to the Ge
    - Name: HOLEFS
    - VPC: select the Geoserver-vpc that you created.
 ![Screenshot 2024-11-07 195103](https://github.com/user-attachments/assets/02fe3506-b02d-4ce9-983f-3675baac5432)
+4. Click the Customize button and then scroll to the bottom of the page and click Next.
+5. In the Network Access screen select the HOLEFS security group from the security group drop down and un-tick the Default security group for each availability zone. Ensure that the private subnet is selected in each availability zone.
+![Screenshot 2024-11-07 195257](https://github.com/user-attachments/assets/d4373f5e-7ca1-4452-b67b-249b72ff86fa)
+6. Click Next button then click the Next button on the Policy tab. On the final Review and Create tab click Create.
 
+Congratulations. You have just created a NFS file system that can be used by Geoserver.
 
+ ## Create AWS CloudShell environment to manage database
+We will use an AWS CloudShell instance configured to run within the same VPC as the database. We will use the database administration client to configure PostGIS and upload some sample data.
+
+At the bottom of the AWS console browser window select CloudShell to open the AWS CloudShell command line.
+
+CloudShell button
+
+At the top right of the CloudShell window select the Actions menu dropdown and select the Create VPC environment action.
 
 
 
