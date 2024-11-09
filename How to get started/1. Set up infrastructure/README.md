@@ -168,7 +168,8 @@ Before you move on verify that your RDS database is running.
 5. In RDS console check your database is available. To do this:
    - Type RDS in the top search bar then click RDS in the search results
    - From the RDS console dashboard select Databases from the left hand menu.
-6. Click on the postgis name to open the database details. Click the radio button to the left of the mypostgis row where the Role column shows "Regional Cluster". (It should be pre-selected). In the Connectivity & Security tab locate the writer end point as shown below. Click the Copy icon to copy the end point address. Store this in a text editor as we will need it when connecting to the database.
+6. Click on the "postgis" name to open the database details. In the Connectivity & Security tab locate the Endpoint & port as shown below. Click the Copy icon to copy the endpoint address. Store this in a text editor as we will need it when connecting to the database.
 ![Screenshot 2024-11-07 221907](https://github.com/user-attachments/assets/47097cd6-b3b4-40a1-9225-4d757fafdebf)
-![Screenshot 2024-11-07 222229](https://github.com/user-attachments/assets/c03c1974-a2a9-4be1-a4be-2024982a1ff7)
+![Screenshot 2024-11-07 222223](https://github.com/user-attachments/assets/9ea31e26-5747-44c1-a73c-7bf6b8913321)
+
 
