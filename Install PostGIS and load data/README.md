@@ -7,4 +7,6 @@
 ![Screenshot 2024-11-07 203430](https://github.com/user-attachments/assets/82848938-db85-485f-8f8c-2010c0f2f385)
 5. (Note: This step not needed when using CloudShell CLI. Install only needed if you are using EC2 instance as in appendix) If postgres client tools not installed, install the local postgres client tools on the Instance by entering this command line:
 
- sudo dnf install postgresql15 --assumeyes
+```bash
+sudo dnf install postgresql15 --assumeyes
+```
