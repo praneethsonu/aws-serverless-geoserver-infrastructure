@@ -26,7 +26,7 @@ In this section:
 
 Note down the VPC ID of the VPC you have created as you will need this in the next step when you create the Security groups. To find the VPC ID you can see this in the VPC console by clicking on the Your VPCs link to see VPCs listed.
 
-# Create security groups
+# Create four security groups
 Now that we have a Virtual Private Cloud, we need to create Security groups to allow appropriate traffic between the user, the Geoserver application, the shared file system and a backend PostgreSQL PostGIS database.
 
 ## Application Load Balancer Security Group
@@ -92,6 +92,51 @@ Our final security group is to control traffic flowing to the backend database. 
    - Click in the search field next to Source and select the HOLgeoserver security group. This will lock down the file system to only your Geoserver instances for access.
 4. Click the Create security group button at the bottom of the frame. Note down the security group Id as you will need this for the next security group setup.
 ![Screenshot 2024-11-07 194935](https://github.com/user-attachments/assets/394e16f2-5915-4bbc-9a7d-4438320e9e19)
+
+# Create PostgreSQL Database
+We will create the database now to ensure it is ready when we need to connect to it latter.
+1. Type RDS in the search bar at the top of the screen. Click the RDS title from the search results.
+2. From the RDS console click the Create Database button.
+![image](https://github.com/user-attachments/assets/81102210-85a5-4080-b731-be2282de3434)
+3. Select the following options on the Create Database page.
+   - Database Creation Method: Standard create
+   - Engine Option: PostgreSQL
+   - Hide filters: select Engine version then select PostgreSQL 15.4=R3 (if shown).
+   - Templates: select Free tier
+![image](https://github.com/user-attachments/assets/420ed675-3140-4726-876f-0f439b380ca2)
+4. Scroll down and select Dev/test template. Under setting:
+   - DB cluster identifier : postgis
+   - Master username: pgadmin
+   - Master Password: Enter a password of your choosing
+   - Confirm master password: Re-enter your password
+5. Set storage and DB instance class configuration:
+   - Instance Configuration --> Burstable classes (includes t classes)
+   - Storage Type--> Configuration option: Aurora Standard
+6. In connectivity section set the following values:
+   - Compute Resource: Don't Connect to an EC2 compute resource
+   - (VPC): Select the Geoserver-VPC you created earlier
+   - VPC Security Group: Select Choose Existing and select HOL-PostGIS security group that you created earlier.
+Leave the other options as the defaults.
+7. In the Monitoring section deselect Performance Insights and Enhanced Monitoring to turn off these features. You may wish to explore these latter for your own deployments but we do not use them in this lab.
+8. Expand the Additional configuration section at bottom of page and configure the following:
+
+Initial Database Name: firstdb
+![Screenshot 2024-11-07 200606](https://github.com/user-attachments/assets/de9bae73-c9d1-4314-8b7e-b175d5bb00d8)
+9. You can leave the remaining settings as is and click Create Database. You can close any pop up to install add-ons.
+
+Congratulations! You just created a resilient PostgreSQL database that will be a data source for your Geoserver,
+
+## Create Amazon Elastic File Server (EFS)
+In this section we will create the shared file system that we will map to the Geoserver standard data directory area. This will enable multiple Geoserver instances to share a common configuration.
+
+1. Type EFS into the search bar at the top of the screen. Click the EFS search result to open the EFS console.
+2. Click the Create File System button.
+![Screenshot 2024-11-07 195044](https://github.com/user-attachments/assets/48e46f42-a1bc-47ae-a71e-1d63be5f139c)
+3. On the Create File System prompt enter:
+   - Name: HOLEFS
+   - VPC: select the Geoserver-vpc that you created.
+![Screenshot 2024-11-07 195103](https://github.com/user-attachments/assets/02fe3506-b02d-4ce9-983f-3675baac5432)
+
 
 
 
