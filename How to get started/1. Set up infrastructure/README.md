@@ -44,3 +44,45 @@ We will use an Application Load Balancer (ALB) to front-end our Geoserver servic
    - Select HTTP from the type drop down. This will select port 80
    - Select anywhere ipv4 0.0.0.0/0 from the Source field.
 4. Click the Create security group button at bottom.
+![Screenshot 2024-11-07 194209](https://github.com/user-attachments/assets/86d4201d-4cdb-481a-a5be-032c9514c420)
+![Screenshot 2024-11-07 194230](https://github.com/user-attachments/assets/3086f559-12bb-4cb3-9de0-cefc127300df)
+
+## HOLGeoserver security group
+This will be the security group around the Geoserver application we will create latter in the lab. We will allow traffic only on port 8080 from either the Application Load balancer for final set up or from your laptop IP in the single instance testing and setup phase.
+1. From the VPC console select Security Groups from the left hand menu. Once opened click the Create security group button in the top right hand corner.
+![Screenshot 2024-11-07 194323](https://github.com/user-attachments/assets/4db72a3f-a3e1-4f77-b8d8-831573060e37)
+2. Enter the following details:
+   - Security Group Name: HOL-Geoserver
+   - Description: HOLGeoserver
+   - VPC: Click the dropdown in the VPC field then select the geoserver-vpc VPC.
+   ![image](https://github.com/user-attachments/assets/8956e4a6-4e79-42c7-808e-29874c46d7e0)
+
+3. In Inbound rules click Add rule
+   - Select Custom TCP from the type drop down.
+   - Enter 8080 in the Port Range field.
+   - Select MyIP from the Source field. This will lock down the instance to only your desktop for access.
+4. Click the Add Rule Button again.
+   - Select Custom TCP from the type drop down.
+   - Enter 8080 in the Port Range field.
+   - Click in the search field next to Source and select the HOLALB security group.
+5. Click the Create security group button at the bottom of the frame. Note down the security group Id as you will need this for the next security group setup.
+   ![Screenshot 2024-11-07 194529](https://github.com/user-attachments/assets/a75539c6-5470-468d-a0b6-0de25fb89d8b)
+## HOLEFS security group
+Now we create the security group to control traffic flowing to the shared file system (Amazon EFS). So in this case we want to allow NFS traffic requests coming from the Geoserver instances.
+1. Again click the Create security group button in the top right-hand corner.
+2. Enter the following details:
+   - Security Group Name: HOL-EFS
+   - Description: HOLEFS
+   - VPC: Click the dropdown in the VPC field then select the geoserver-vpc VPC.
+   ![Screenshot 2024-11-07 194641](https://github.com/user-attachments/assets/dc4ba123-bc3b-4096-9ed7-3d8854348fe7)
+3. In Inbound rules click Add rule
+   - Select NFS from the type drop down. This will set the port to 2049.
+   - Click in the search field next to Source and select the HOLgeoserver security group. This will lock down the file system to only your Geoserver instances for access.
+4. Click the Create security group button at the bottom of the frame. Note down the security group Id as you will need this for the next security group setup.
+![Screenshot 2024-11-07 194935](https://github.com/user-attachments/assets/57d5602a-42bb-449b-879e-8f80445f2db4)
+
+
+
+
+
+
