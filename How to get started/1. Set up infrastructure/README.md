@@ -79,7 +79,7 @@ Now we create the security group to control traffic flowing to the shared file s
    - Select NFS from the type drop down. This will set the port to 2049.
    - Click in the search field next to Source and select the HOLgeoserver security group. This will lock down the file system to only your Geoserver instances for access.
 4. Click the Create security group button at the bottom of the frame. Note down the security group Id as you will need this for the next security group setup.
-![Screenshot 2024-11-07 194935](https://github.com/user-attachments/assets/57d5602a-42bb-449b-879e-8f80445f2db4)
+![Screenshot 2024-11-07 194723](https://github.com/user-attachments/assets/3ed85381-b312-4ccf-a7f3-c9aec819f251)
 ## PostGIS security group
 Our final security group is to control traffic flowing to the backend database. Here we want to allow traffic from the Geoserver instances to the database.
 1. Again click the Create security group button in the top right hand corner.
