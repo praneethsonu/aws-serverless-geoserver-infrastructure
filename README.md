@@ -8,7 +8,8 @@ At the completion of this lab, you will have created an autoscaling Fargate serv
 
 The architecture is illustrated in the figure below.
 
-<img width="4060" alt="AWS cloud diagram (Community)" src="https://github.com/user-attachments/assets/2fdc6203-2731-4bb7-a85b-492a89a7d5cb">
+<img width="4060" alt="GeoserverArchitecture" src="https://github.com/user-attachments/assets/019ae062-6317-42ce-a58f-0600118d2133">
+
 Note when running GeoServer in a clustered configuration there are some considerations to keep in mind when updating the shared data configuration as a GeoServer caches the configuration in memory. This is explained in more detail here:
 
 https://geoserver.geosolutionsgroup.com/edu/en/clustering/clustering/passive/passive.html
