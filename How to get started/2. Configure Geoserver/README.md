@@ -5,5 +5,16 @@ In this section:
 - Populate the database with some geospatial data
 - Provision the GeoServer container.
 - Create a load-balanced service for the Geoserver container.
-- At the end of this lab you would have built out the full architecture as shown below.
-<img width="4061" alt="Geoserver Architecture" src="https://github.com/user-attachments/assets/0fa10162-54d4-4771-8c5d-1cf9e5670d6c">
+
+## Create ECS Cluster
+We will now create an ECS cluster to support Fargate container instances to host Geoserver application.
+
+1. Type ECS into the search bar at the top of the screen and select Elastic Container Service from the search results.
+2. On the ECS console select Clusters from the left hand menu then and click the Create Cluster button.
+![Screenshot 2024-11-07 205006](https://github.com/user-attachments/assets/eb8d2ff6-9db5-4e9c-80b4-fb30c40f8f14)
+3. On the Create Cluster screen enter the following then click Create Cluster
+   - Cluster Name: HOL-Cluster
+Leave Infrastructure settings as is to support Fargate based serverless deployment. Click Create to create the cluster.
+
+This will take a few minutes to complete. Troubleshooting: If this operation fails with an error the first time rerun the create cluster instructions above.
+![image](https://github.com/user-attachments/assets/df9c359d-9aa7-4d34-8853-19a86758ab8f)
