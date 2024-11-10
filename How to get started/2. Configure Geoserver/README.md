@@ -1,4 +1,4 @@
-# Configure Geoserver
+![Screenshot 2024-11-07 220428](https://github.com/user-attachments/assets/38c935b7-86cf-42f3-900b-5dfeb78e02b9)# Configure Geoserver
 
 In this section:
 - Configure the PostgreSQL database including installing PostGIS.
@@ -130,3 +130,111 @@ Now let's connect to the database we created earlier and publish a layer from da
 21. Navigate to the Layer Preview page and click on the Open Layers link for this layer to preview.
 ![image](https://github.com/user-attachments/assets/ba3c7207-e8e9-4bae-a6f4-3f06e6f2b9f5)
 Congratulations you have published data stored in your backend PostgreSQL PostGIS database into Geoserver.
+
+## Create Target Group
+
+We will create a Target Group which will be needed when we create a Load Balancer in the next step.
+
+A Target Group defines what resources the load balancer will send traffic to, in our case this will be the GeoServer containers. Since we need to configure a custom port number (8080) and some custom health check information we need to set this up before we dive in to create the Load Balancer.
+
+1. Open the EC2 console by typing EC2 into the search bar at the top of the screen. Click the EC2 search result.
+
+2. In the left hand menu locate the Load Balancing section and click Target Groups
+
+3. Click the Create Target Group button.
+4. On the Specify group details page enter the following:
+   - Choose Target Type: IP addresses
+   - Target Group Name: HOLGEOTG
+   - Protocol: HTTP
+   - Port :8080
+   - VPC: Select the Geoserver-vpc
+5. Scroll down to the Health Checks area and expand the advanced health check settings. Enter the following:
+Health Check Path: /geoserver/web
+Success Codes: 200,302
+![Screenshot 2024-11-07 214706](https://github.com/user-attachments/assets/5d7a78d4-5170-4c52-92fd-3521e95da37c)
+![Screenshot 2024-11-07 214711](https://github.com/user-attachments/assets/63ff02d0-4229-4250-becb-00d66928595f)
+
+
+6. Click Next and then on next screen click Create Target Group.
+![Screenshot 2024-11-07 214730](https://github.com/user-attachments/assets/feaa6e66-69cd-44d8-b199-2b0ad612b304)
+
+7. Select the newly created Target Group and in Actions menu select Edit Target Group Attributes
+![Screenshot 2024-11-07 214755](https://github.com/user-attachments/assets/6c4d023b-e730-4e73-aa1f-b0e49d4b0a2e)
+
+8. In the Target selection configuration Enable stickiness and then click Save changes. This is needed as Geoserver needs sticky sessions to operate behind a load balancer.
+![Screenshot 2024-11-07 214829](https://github.com/user-attachments/assets/549dce80-3f27-48d1-a855-cf451f74d8f5)
+![Screenshot 2024-11-07 214901](https://github.com/user-attachments/assets/d881071c-8023-453f-9d6c-d26eabdc946f)
+
+## Create Load Balancer
+We will now create an Application Load Balancer (ALB) to use in the next step when we scale out to multiple Geoserver tasks running as a service.
+1. In the left hand menu locate the Load Balancing section and click Load Balancers.
+![Screenshot 2024-11-07 214945](https://github.com/user-attachments/assets/8b4c8420-1d8e-4050-83eb-cf4f6eebcbab)
+2. Click Create load balancer.
+3. Click Create under Application Load Balancer.
+![Screenshot 2024-11-07 214951](https://github.com/user-attachments/assets/439eda23-8007-4e5e-ad90-444b9809cf62)
+4. Enter a Name (HOLALB) for the load balancer.
+![Screenshot 2024-11-07 215039](https://github.com/user-attachments/assets/bdc37039-38cf-43c0-83f7-1a7850fa79d2)
+5. In the network mapping section select the geoserver-vpc that you created and select all 3 availability zones. Ensure that the public subnet in each availability zone is selected.
+![Screenshot 2024-11-07 215125](https://github.com/user-attachments/assets/90633812-d9fb-4a0f-8e5d-a7c372dd8174)
+6. In the Security Groups section select the security group called HOLALB. If the default security group is preselected then untick it to remove it.
+7. In the Listener and routing section leave Listener set to port 80. In the Default action drop down select the Target group you created in last step: HOLGEOTG in dropdown.
+![Screenshot 2024-11-07 215245](https://github.com/user-attachments/assets/abe915db-64a9-49c7-b8f1-bbd6dc15c3bd)
+
+9. Click Create Load Balancer at bottom to create the load balancer.
+
+## Create Load Balanced Geoserver Service
+At present we have a single instance of a Geoserver container running on Fargate. To complete the workshop, we will now create a service to run multiple container tasks and expose using a load balancer.
+
+1. Type ECS into the search bar at the top of the screen and select Elastic Container Service from the search results.
+
+2. On the ECS cluster list page click the name of your cluster (HOLCluster). Click the Services tab, then click on Create button.
+![Screenshot 2024-11-07 215728](https://github.com/user-attachments/assets/cffb4273-e2b6-4ee2-ac1b-9376fc355a8d)
+
+3. Scroll down to the Deployment Configuration section. Enter the following:
+   - Family: Select the HOLgeoserver task definition
+   - Service Name: HOLgeoserverservice
+   - Desired tasks: 2
+![Screenshot 2024-11-07 215837](https://github.com/user-attachments/assets/0296b58e-b60e-4e0a-8a53-65be54fcb194)
+4. Scroll down to the Networking section and expand it. Enter the following:
+   - VPC: select the Geoserver-vpc
+   - Subnets: Ensure only the public subnets are selected
+   - Security Group Name: Select the HOLgeoserver security group. If the default security group is selected then de-select it.
+![Screenshot 2024-11-07 215948](https://github.com/user-attachments/assets/abf0cd97-2e73-4107-ae33-d0c602667ada)
+![Screenshot 2024-11-07 220006](https://github.com/user-attachments/assets/c600f261-bd25-41cb-a400-a9aa5f488822)
+5. Expand the Load balancing section. Enter the following:
+   - Load Balancer Type: Application Load Balancer
+   - Application Load Balancer: select Use an existing Load Balancer
+   - Load Balancer: select HOLALB
+   - Listener: Select Use an existing listener then select 80:HTTP from the drop down.
+   - Target Group: Select Use an existing Target Group then select HOLGEOTG from the target group name drop down.
+   - Health Check Grace Period: 300
+![Screenshot 2024-11-07 220213](https://github.com/user-attachments/assets/b18e5a74-f533-4dec-b883-39a511276919)
+6. Scroll down to the Service Auto scaling area. Select Use service auto scaling and enter the following:
+   - Minium Number of tasks: 2
+   - Maximum Number of Tasks: 9
+   - Policy Name: HOLscalepolicy
+   - ECS Service Metric: ECSServiceAverageCPUUtilization
+   - Target Value: 70
+   - Scale-Out cooldown period: 300
+   - Scale-in cooldown period: 300
+![Screenshot 2024-11-07 220428](https://github.com/user-attachments/assets/5bf5a4d5-96db-40cb-861e-b46004dcc4cb)
+8. Scroll to bottom and click Create.
+
+The deployment will take a few minutes and you can optionally click on the view in CloudFormation button to see what resources are being built out.
+
+9. To monitor the deployment click on the service name to see the service details, including deployment status. Once the service is running and targets are healthy click on View load balancer button to open the Load Balancer console.
+![Screenshot 2024-11-07 220810](https://github.com/user-attachments/assets/e00a4d09-3a7b-4578-b3b5-9442d1d511bc)
+
+10. In the Load Balancer details copy the DNS name of the Load Balancer.
+![Screenshot 2024-11-07 220906](https://github.com/user-attachments/assets/a08f8b6d-797e-41ff-9cbf-10fb39892f80)
+
+11. To test the deployment and view Geoserver open a new browser window. Paste in the load balancer DNS URL and postpend /geoserver/web to the end. (NOTE URL is case sensitive)
+![Screenshot 2024-11-07 220926](https://github.com/user-attachments/assets/8bdacf9a-3645-4098-a06a-f5ed14b41052)
+
+![Screenshot 2024-11-07 220948](https://github.com/user-attachments/assets/f042c3b1-80cf-462d-8d17-1b583c281352)
+
+Geoserver should come up and you can log in with the same username/password as before and view the layers you created previously. Note the fact that the same configuration and layers comes up on these new containers illustrates how the use of the common EFS file system allows a scale out architecture to operate successfully.
+
+Congratulations you have now completed the lab and created a load balanced, auto scaling Geoserver deployment running on Fargate containers without having to manage your own server infrastructure.
+
+To see how CloudWatch Logs is managing logs out of the Geoserver container instances open up the CloudWatch console. Then navigate to the /ecs/geoserver Cloudwatch log. Within the logs you should find multiple entries in the log corresponding to each of the Geoserver tasks running. Having logs grouped per task will faciltate management as the number of tasks grows and shrinks.
