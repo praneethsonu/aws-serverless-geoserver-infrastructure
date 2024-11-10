@@ -17,3 +17,5 @@
 - Provision the GeoServer container.
 - Create a load-balanced service for the Geoserver container.
 
+# [Install PostGIS and load data](https://github.com/praneethsonu/aws-serverless-geoserver-infrastructure/tree/main/Install%20PostGIS%20and%20load%20data)
+
