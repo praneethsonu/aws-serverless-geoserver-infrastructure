@@ -1,12 +1,4 @@
-# Configure GeoServer
-
-In this section:
-- Configure the PostgreSQL database including installing PostGIS.
-- Populate the database with some geospatial data
-- Provision the GeoServer container.
-- Create a load-balanced service for the Geoserver container.
-
-## Create ECS Cluster
+# Create ECS Cluster
 We will now create an ECS cluster to support Fargate container instances to host the Geoserver application.
 
 1. Type ECS into the search bar at the top of the screen and select Elastic Container Service from the search results.
