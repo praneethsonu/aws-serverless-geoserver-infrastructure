@@ -47,6 +47,8 @@ http://IP from last step]:8080/geoserver/web. NOTE: URL is case sensitive!
 
 This should open the Geoserver home page.
 ![Screenshot 2024-11-07 211528](https://github.com/user-attachments/assets/99596d74-a0bb-4798-aacd-35491135c533)
+
+
 ![Screenshot 2024-11-07 211545](https://github.com/user-attachments/assets/59088e6f-1ffb-4bb0-a71c-810905be5526)
 2. As this is the default configuration you can login with
    - Username: admin
@@ -101,7 +103,7 @@ Now let's connect to the database we created earlier and publish a layer from da
 16. Enter the following then click Save
     - Workspace: HOLworkspace.
     - Name: NYC-postgis
-    - Description: postgis workshop db
+    - Description: PostGIS workshop db
     - Host: Paste in the RDS endpoint you copied earlier in the workshop.
     - Port: 5432
     - Database: lab_gis
@@ -114,7 +116,7 @@ Now let's connect to the database we created earlier and publish a layer from da
 ![image](https://github.com/user-attachments/assets/ced75d18-ce43-43b2-9dd5-f7680eb42d08)
 19. Scroll down to the bounding boxes sections and click on the compute from native bounds link to populate bounding boxes.
 ![image](https://github.com/user-attachments/assets/06f085e0-74be-48d2-b582-855fb3203ddf)
-20. Click Save to complete layer definition.
+20. Click Save to complete the layer definition.
 21. Navigate to the Layer Preview page and click on the Open Layers link for this layer to preview.
 ![image](https://github.com/user-attachments/assets/ba3c7207-e8e9-4bae-a6f4-3f06e6f2b9f5)
 Congratulations you have published data stored in your backend PostgreSQL PostGIS database into Geoserver.
