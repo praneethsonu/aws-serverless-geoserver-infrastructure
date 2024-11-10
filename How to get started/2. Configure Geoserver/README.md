@@ -231,9 +231,8 @@ The deployment will take a few minutes and you can optionally click on the view 
 10. To test the deployment and view Geoserver open a new browser window. Paste in the load balancer DNS URL and postpend /geoserver/web to the end. (NOTE URL is case sensitive)
 ![Screenshot 2024-11-07 220926](https://github.com/user-attachments/assets/8bdacf9a-3645-4098-a06a-f5ed14b41052)
 
-![Screenshot 2024-11-07 220948](https://github.com/user-attachments/assets/f042c3b1-80cf-462d-8d17-1b583c281352)
-
 Geoserver should come up and you can log in with the same username/password as before and view the layers you created previously. Note the fact that the same configuration and layers comes up on these new containers illustrates how the use of the common EFS file system allows a scale out architecture to operate successfully.
+![Screenshot 2024-11-07 220954](https://github.com/user-attachments/assets/22a63200-fdf5-411a-b39a-8da6a772633a)
 
 Congratulations you have now completed the lab and created a load-balanced, auto-scaling Geoserver deployment running on Fargate containers without having to manage your own server infrastructure.
 
