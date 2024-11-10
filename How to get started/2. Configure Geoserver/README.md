@@ -89,3 +89,32 @@ Then :
 12. You can now go to the Layer Preview area ( select from left hand menu) and click on OpenLayers next to your new layer to see the Published layer. I am selecting US population
 ![Screenshot 2024-11-07 212955](https://github.com/user-attachments/assets/38be1c40-79c5-4ac3-a0ad-a97217e3255e)
 Congratulations you have published geospatial data stored on a shared file system using Geoserver running in a Fargate hosted docker container.
+## Publish a layer from the PostgreSQL database.
+Now let's connect to the database we created earlier and publish a layer from data in the PostgreSQL database.
+
+13. On the Geoserver home page click on the Stores link.
+![image](https://github.com/user-attachments/assets/42816ebe-d14d-4fc2-a3c2-2ae1c6e56f04)
+14. Click Add new Store.
+![image](https://github.com/user-attachments/assets/ad09e228-2901-4c3b-806d-2b5fb275654c)
+15. Select PostGIS under Vector Data sources.
+![image](https://github.com/user-attachments/assets/ef3b6ebe-a740-42c0-b8cd-e21af63ccdb8)
+16. Enter the following then click Save
+    - Workspace: HOLworkspace.
+    - Name: NYC-postgis
+    - Description: postgis workshop db
+    - Host: Paste in the RDS endpoint you copied earlier in the workshop.
+    - Port: 5432
+    - Database: lab_gis
+    - user: gis_admin
+    - Password: enter the password you used when creating the lab_gis user.
+![Screenshot 2024-11-07 213338](https://github.com/user-attachments/assets/3527417c-264a-40de-95e3-7e067df291ea)
+17. When the new layer page displays click on the Publish link next to the nyc_census_blocks row.
+![image](https://github.com/user-attachments/assets/18c33eb4-2c4e-44bf-bd9a-96256242a30d)
+18. On the Edit Layer page enter a Name (HOL_nyc_census_blocks) and Description (HOL_nyc_census_blocks) to make the layer easy to locate.
+![image](https://github.com/user-attachments/assets/ced75d18-ce43-43b2-9dd5-f7680eb42d08)
+19. Scroll down to the bounding boxes sections and click on the compute from native bounds link to populate bounding boxes.
+![image](https://github.com/user-attachments/assets/06f085e0-74be-48d2-b582-855fb3203ddf)
+20. Click Save to complete layer definition.
+21. Navigate to the Layer Preview page and click on the Open Layers link for this layer to preview.
+![image](https://github.com/user-attachments/assets/ba3c7207-e8e9-4bae-a6f4-3f06e6f2b9f5)
+Congratulations you have published data stored in your backend PostgreSQL PostGIS database into Geoserver.
