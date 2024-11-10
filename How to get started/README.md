@@ -1,4 +1,4 @@
-# 1. Set up infrastructure
+# 1. [Set up infrastructure](https://github.com/praneethsonu/aws-serverless-geoserver-infrastructure/tree/main/How%20to%20get%20started/1.%20Set%20up%20infrastructure)
 
 In this section:
 
@@ -8,7 +8,7 @@ In this section:
 - An administration server to allow you to perform database setup tasks.
 - Security groups that will control access to the database and shared storage.
 
-# 2. Configure Geoserver
+# 2. [Configure GeoServer](https://github.com/praneethsonu/aws-serverless-geoserver-infrastructure/tree/a9af0853dfa60ffb6c600a1dfd9358769b212441/How%20to%20get%20started/2.%20Configure%20Geoserver)
 
 In this section:
 
