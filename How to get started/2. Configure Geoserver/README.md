@@ -40,3 +40,52 @@ Once your task shows as running in the console click on the link in the Task col
 
 5. Locate the public IP address of your container. Copy and paste it into a text editor as we will use it shortly.
 ![Screenshot 2024-11-07 211406](https://github.com/user-attachments/assets/276e8d72-38c5-48e6-9c96-d5ab48bc6efc)
+
+## Use and configure Geoserver
+1. Open a new browser tab and enter the following :
+http://IP from last step]:8080/geoserver/web. NOTE: URL is case sensitive!
+
+This should open the Geoserver home page.
+![Screenshot 2024-11-07 211528](https://github.com/user-attachments/assets/99596d74-a0bb-4798-aacd-35491135c533)
+![Screenshot 2024-11-07 211545](https://github.com/user-attachments/assets/59088e6f-1ffb-4bb0-a71c-810905be5526)
+2. As this is the default configuration you can login with
+   - Username: admin
+   - Password: geoserver.
+Make sure you change this when building Geoserver for your own purposes.
+![Screenshot 2024-11-07 211636](https://github.com/user-attachments/assets/796eaf97-0ddf-4890-a804-20b30ea59526)
+![Screenshot 2024-11-07 211734](https://github.com/user-attachments/assets/c2a79982-cfe9-4158-bcc0-cd478d7f7e83)
+3. You can click on Layer Preview to view some of the built-in layers for demonstration.
+## Create a Workspace
+We will create a Workspace for some hands on lab exercises within Geoserver to leverage the Amazon EFS file store and the Amazon Aurora PostgreSQL PostGIS database.
+1. Click on Workspaces on left tab.
+![image](https://github.com/user-attachments/assets/cd94215f-a079-49f0-a7bf-95a7145d7c44)
+2. Then click Add new workspace.
+![image](https://github.com/user-attachments/assets/f42071e4-d67a-468e-9835-bb9414c78f9b)
+3. Enter a name for the workspace (HOLworkspace) and a URI (http://www.myholworkspace.com ), then click Save.
+Now we add some data stores to illustrate accessing the connected file system and the backend database.
+4. Click on the Stores link on the left panel.
+![image](https://github.com/user-attachments/assets/0c8e52d1-3c69-4c22-ad62-55101d103de0)
+5. Then click Add new Store.
+![image](https://github.com/user-attachments/assets/376ed06c-620a-43cf-8dd5-f14b47de18de)
+6. Click on Shapefile under Vector Data Sources.
+7. Enter the following details:
+   - Workspace: Select HOLworkspace
+   - Data Source Name: HOLefsusstates
+   - Description: US states from EFS
+![image](https://github.com/user-attachments/assets/ee36e7a9-53a3-49ec-b7f8-fa4b5ca45dbc)
+Then :
+- Click the browse link next to the Shapefile Location field.
+- Click the data/ link
+- Click shapefiles/ link
+- Click the states.shp link to select the States shapefile.
+![image](https://github.com/user-attachments/assets/905cb705-0bdf-4c4c-ae3f-1cc90c538f28)
+8. Then click Save. This takes you to the New Layer screen. Click the Publish link to publish this data source as a layer.
+![image](https://github.com/user-attachments/assets/41d61c5e-9411-4507-ac10-1a3b43f265dd)
+9. In the Edit Layer screen update the Name to HOL EFS US States and Title to HOL EFS US States so you can identify this layer from the built-in layers.
+![image](https://github.com/user-attachments/assets/2254ffaa-1d78-433b-a7f8-55dacd38558d)
+10. Scroll down the screen to the Bounding Boxes section. Click on the Compute from Native bounds link.
+![image](https://github.com/user-attachments/assets/5c14ebbb-9815-4c34-b4f6-f36122b1ba60)
+11. Then click Save and you will see layer has been added.
+12. You can now go to the Layer Preview area ( select from left hand menu) and click on OpenLayers next to your new layer to see the Published layer. I am selecting US population
+![Screenshot 2024-11-07 212955](https://github.com/user-attachments/assets/38be1c40-79c5-4ac3-a0ad-a97217e3255e)
+Congratulations you have published geospatial data stored on a shared file system using Geoserver running in a Fargate hosted docker container.
