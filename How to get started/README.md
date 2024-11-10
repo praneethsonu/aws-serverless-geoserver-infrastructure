@@ -1,4 +1,4 @@
-# Set up infrastructure
+# 1. Set up infrastructure
 
 In this section:
 
@@ -8,7 +8,7 @@ In this section:
 - An administration server to allow you to perform database setup tasks.
 - Security groups that will control access to the database and shared storage.
 
-# Configure Geoserver
+# 2. Configure Geoserver
 
 In this section:
 
