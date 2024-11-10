@@ -59,18 +59,22 @@ Make sure you change this when building Geoserver for your own purposes.
 3. You can click on Layer Preview to view some of the built-in layers for demonstration.
 ## Create a Workspace
 We will create a Workspace for some hands on lab exercises within Geoserver to leverage the Amazon EFS file store and the Amazon Aurora PostgreSQL PostGIS database.
-1. Click on Workspaces on left tab.
+1. Click on Workspaces on the left tab.
 ![image](https://github.com/user-attachments/assets/cd94215f-a079-49f0-a7bf-95a7145d7c44)
 2. Then click Add new workspace.
 3. Enter a name for the workspace (HOLworkspace) and a URI (http://www.myholworkspace.com ), then click Save.
 ![image](https://github.com/user-attachments/assets/f42071e4-d67a-468e-9835-bb9414c78f9b)
 
 Now we add some data stores to illustrate accessing the connected file system and the backend database.
+
 4. Click on the Stores link on the left panel.
 ![image](https://github.com/user-attachments/assets/0c8e52d1-3c69-4c22-ad62-55101d103de0)
+
 5. Then click Add new Store.
 ![image](https://github.com/user-attachments/assets/376ed06c-620a-43cf-8dd5-f14b47de18de)
+
 6. Click on Shapefile under Vector Data Sources.
+
 7. Enter the following details:
    - Workspace: Select HOLworkspace
    - Data Source Name: HOLefsusstates
