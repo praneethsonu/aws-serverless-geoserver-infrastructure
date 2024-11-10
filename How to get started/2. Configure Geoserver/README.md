@@ -63,6 +63,7 @@ We will create a Workspace for some hands on lab exercises within Geoserver to l
 ![image](https://github.com/user-attachments/assets/cd94215f-a079-49f0-a7bf-95a7145d7c44)
 2. Then click Add new workspace.
 ![image](https://github.com/user-attachments/assets/f42071e4-d67a-468e-9835-bb9414c78f9b)
+
 3. Enter a name for the workspace (HOLworkspace) and a URI (http://www.myholworkspace.com ), then click Save.
 Now we add some data stores to illustrate accessing the connected file system and the backend database.
 4. Click on the Stores link on the left panel.
@@ -84,7 +85,9 @@ Then :
 8. Then click Save. This takes you to the New Layer screen. Click the Publish link to publish this data source as a layer.
 ![image](https://github.com/user-attachments/assets/41d61c5e-9411-4507-ac10-1a3b43f265dd)
 9. In the Edit Layer screen update the Name to HOL EFS US States and Title to HOL EFS US States so you can identify this layer from the built-in layers.
+
 ![image](https://github.com/user-attachments/assets/2254ffaa-1d78-433b-a7f8-55dacd38558d)
+
 10. Scroll down the screen to the Bounding Boxes section. Click on the Compute from Native bounds link.
 ![image](https://github.com/user-attachments/assets/5c14ebbb-9815-4c34-b4f6-f36122b1ba60)
 11. Then click Save and you will see layer has been added.
