@@ -1,4 +1,4 @@
-# Configure Geoserver
+# Configure GeoServer
 
 In this section:
 - Configure the PostgreSQL database including installing PostGIS.
@@ -7,14 +7,14 @@ In this section:
 - Create a load-balanced service for the Geoserver container.
 
 ## Create ECS Cluster
-We will now create an ECS cluster to support Fargate container instances to host Geoserver application.
+We will now create an ECS cluster to support Fargate container instances to host the Geoserver application.
 
 1. Type ECS into the search bar at the top of the screen and select Elastic Container Service from the search results.
-2. On the ECS console select Clusters from the left hand menu then and click the Create Cluster button.
+2. On the ECS console select Clusters from the left-hand menu then and click the Create Cluster button.
 ![Screenshot 2024-11-07 205006](https://github.com/user-attachments/assets/eb8d2ff6-9db5-4e9c-80b4-fb30c40f8f14)
 3. On the Create Cluster screen enter the following then click Create Cluster
    - Cluster Name: HOL-Cluster
-Leave Infrastructure settings as is to support Fargate based serverless deployment. Click Create to create the cluster.
+Leave Infrastructure settings as is to support Fargate-based serverless deployment. Click Create to create the cluster.
 
 This will take a few minutes to complete. Troubleshooting: If this operation fails with an error the first time rerun the create cluster instructions above.
 
@@ -27,14 +27,14 @@ Now we have all the components in place we can run an instance of Geoserver.
 ![Screenshot 2024-11-07 211018](https://github.com/user-attachments/assets/c151b21c-72d0-46ea-a67b-22367c463d5a)
 2. Select your ECS cluster in the Existing Cluster field.
 ![Screenshot 2024-11-07 211048](https://github.com/user-attachments/assets/96b9dfc5-dbb6-439a-bb02-bc23d501237d)
-3. Scroll down and open the Networking panel and expand it. Configure the following:
-   - VPC: Select the Geoserver-VPC
-   - Subnets: Make sure only the 3 subnets with public in their name are selected.
+3. Scroll down open the Networking panel and expand it. Configure the following:
+   - VPC: Select the GeoServer-VPC
+   - Subnets: Make sure only the 3 subnets with the public in their name are selected.
    - Security Group Name: Select the HOLGeosever security group. And remove the default security group
    - Public IP: make sure this is enabled.
 ![Screenshot 2024-11-07 211207](https://github.com/user-attachments/assets/79b02d7a-a58f-4422-bee1-44fa20be62d0)
 
-4. Scroll to bottom and click Create to start the Geoserver container.
+4. Scroll to the bottom and click Create to start the GeoServer container.
 Once your task shows as running in the console click on the link in the Task column to view the task details.
 ![Screenshot 2024-11-07 211252](https://github.com/user-attachments/assets/0e98f6a3-b780-4ccc-ab3b-f02a54bbe6f5)
 
@@ -231,9 +231,9 @@ The deployment will take a few minutes and you can optionally click on the view 
 10. To test the deployment and view Geoserver open a new browser window. Paste in the load balancer DNS URL and postpend /geoserver/web to the end. (NOTE URL is case sensitive)
 ![Screenshot 2024-11-07 220926](https://github.com/user-attachments/assets/8bdacf9a-3645-4098-a06a-f5ed14b41052)
 
-Geoserver should come up and you can log in with the same username/password as before and view the layers you created previously. Note the fact that the same configuration and layers comes up on these new containers illustrates how the use of the common EFS file system allows a scale out architecture to operate successfully.
+### Geoserver should come up and you can log in with the same username/password as before and view the layers you created previously. Note the fact that the same configuration and layers comes up on these new containers illustrates how the use of the common EFS file system allows a scale out architecture to operate successfully.
 ![Screenshot 2024-11-07 220954](https://github.com/user-attachments/assets/22a63200-fdf5-411a-b39a-8da6a772633a)
 
-Congratulations you have now completed the lab and created a load-balanced, auto-scaling Geoserver deployment running on Fargate containers without having to manage your own server infrastructure.
+### Congratulations you have now completed the lab and created a load-balanced, auto-scaling Geoserver deployment running on Fargate containers without having to manage your own server infrastructure.
 
 To see how CloudWatch Logs is managing logs out of the GeoServer container instances open up the CloudWatch console. Then navigate to the /ecs/geoserver Cloudwatch log. Within the logs, you should find multiple entries in the log corresponding to each of the GeoServer tasks running. Having logs grouped per task will facilitate management as the number of tasks grows and shrinks.
