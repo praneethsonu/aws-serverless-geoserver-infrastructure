@@ -100,6 +100,7 @@ Now let's connect to the database we created earlier and publish a layer from da
 ![image](https://github.com/user-attachments/assets/ad09e228-2901-4c3b-806d-2b5fb275654c)
 15. Select PostGIS under Vector Data sources.
 ![image](https://github.com/user-attachments/assets/ef3b6ebe-a740-42c0-b8cd-e21af63ccdb8)
+
 16. Enter the following then click Save
     - Workspace: HOLworkspace.
     - Name: NYC-postgis
