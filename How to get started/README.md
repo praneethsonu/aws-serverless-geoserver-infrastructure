@@ -1,6 +1,6 @@
 # [Set up infrastructure](https://github.com/praneethsonu/aws-serverless-geoserver-infrastructure/tree/main/How%20to%20get%20started/1.%20Set%20up%20infrastructure)
 
-In this section:
+#### In this section we will create:
 
 - A Virtual Private Cloud (VPC) and create Security Groups.
 - A PostgreSQL database using Amazon RDS.
@@ -10,7 +10,7 @@ In this section:
 
 # [Configure GeoServer](https://github.com/praneethsonu/aws-serverless-geoserver-infrastructure/tree/a9af0853dfa60ffb6c600a1dfd9358769b212441/How%20to%20get%20started/2.%20Configure%20Geoserver)
 
-In this section:
+#### In this section we will create:
 
 - Configure the PostgreSQL database including installing PostGIS.
 - Populate the database with some geospatial data
