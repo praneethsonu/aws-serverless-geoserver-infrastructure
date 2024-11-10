@@ -1,13 +1,3 @@
-# Set up infrastructure
-
-In this section:
-
-- A Virtual Private Cloud (VPC) and create Security Groups.
-- A PostgreSQL database using Amazon RDS.
-- An Amazon Elastic File System (EFS) for shared storage.
-- An administration server to allow you to perform database setup tasks.
-- Security groups that will control access to the database and shared storage.
-
 # Set up a Virtual Private Cloud (VPC)
 
 1. Open the VPC console by typing VPC in the search bar at the top of the screen. Click the VPC title in the search results.
