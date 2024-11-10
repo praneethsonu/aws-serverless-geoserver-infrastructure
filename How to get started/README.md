@@ -12,8 +12,8 @@ In this section:
 
 In this section:
 
-Configure the PostgreSQL database including installing PostGIS.
-Populate the database with some geospatial data
-Provision the Geoserver container
-Create a load balanced service for the Geoserver container
+- Configure the PostgreSQL database including installing PostGIS.
+- Populate the database with some geospatial data
+- Provision the GeoServer container.
+- Create a load-balanced service for the Geoserver container.
 
