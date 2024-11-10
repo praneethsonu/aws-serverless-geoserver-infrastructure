@@ -97,8 +97,11 @@ Now let's connect to the database we created earlier and publish a layer from da
 13. On the Geoserver home page click on the Stores link.
 ![image](https://github.com/user-attachments/assets/42816ebe-d14d-4fc2-a3c2-2ae1c6e56f04)
  
-14. Click Add new Store. ![image](https://github.com/user-attachments/assets/ad09e228-2901-4c3b-806d-2b5fb275654c)
-15. Select PostGIS under Vector Data sources. ![image](https://github.com/user-attachments/assets/ef3b6ebe-a740-42c0-b8cd-e21af63ccdb8)
+14. Click Add new Store. 
+![Screenshot 2024-11-07 213116](https://github.com/user-attachments/assets/4f99ac82-421c-4aae-884d-158fd35d7be5)
+
+15. Select PostGIS under Vector Data sources.
+![Screenshot 2024-11-07 213121](https://github.com/user-attachments/assets/1f6c432c-9ccb-4f75-985b-b52b5f2433e1)
 
 16. Enter the following then click Save
     - Workspace: HOLworkspace.
