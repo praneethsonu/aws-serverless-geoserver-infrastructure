@@ -31,7 +31,7 @@ Now let's get started and start building this out from scratch on AWS.
 
 Follow the instructions in the [How to get started](https://github.com/praneethsonu/aws-serverless-geoserver-infrastructure/tree/main/How%20to%20get%20started) directory to set up and deploy the infrastructure.
 
-Also Check out my [AWS Community Post](https://community.aws/content/2p81D68CLjdrJs0Hq0FbqVM7yVN)
+Also Check out my [AWS Community Post](https://community.aws/content/2p81D68CLjdrJs0Hq0FbqVM7yVN) & [LinkedIn Post](https://www.linkedin.com/posts/praneethb2_serverless-geoserver-infrastructure-activity-7263266225068122112-m9VX?utm_source=share&utm_medium=member_desktop)
 
 ## License
 
