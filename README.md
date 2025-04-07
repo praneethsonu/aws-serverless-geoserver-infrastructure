@@ -13,13 +13,13 @@ The architecture is illustrated in the figure below.
 - **AWS Fargate**: A serverless compute engine for containers.
 - **PostgreSQL/PostGIS**: A spatial database extender for PostgreSQL.
 
-Note: when running GeoServer in a clustered configuration there are some considerations to keep in mind when updating the shared data configuration as a GeoServer caches the configuration in memory. This is explained in more detail here:
+Note: when running GeoServer in a clustered configuration, there are some considerations to keep in mind when updating the shared data configuration as a GeoServer caches the configuration in memory. This is explained in more detail here:
 
 https://geoserver.geosolutionsgroup.com/edu/en/clustering/clustering/passive/passive.html
 
 
 
-Now let's get started and start building this out from scratch on AWS.
+Now, let's get started and start building this out from scratch on AWS.
   
 ## Features
 
